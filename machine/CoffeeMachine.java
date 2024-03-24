@@ -2,20 +2,25 @@ package machine;
 
 
 public class CoffeeMachine {
-
+    private static CoffeeMachine instance;
     private int amountOfWater;
     private int amountOfMilk;
     private int amountOfCoffeeBean;
     private int disposableCups;
     private int totalIncome;
-
-
-    public CoffeeMachine(int amountOfWater, int amountOfMilk, int amountOfCoffeeBean, int amountOfCups, int basedMoney) {
+    private CoffeeMachine(int amountOfWater, int amountOfMilk, int amountOfCoffeeBean, int disposableCups, int totalIncome) {
         this.amountOfWater = amountOfWater;
         this.amountOfMilk = amountOfMilk;
         this.amountOfCoffeeBean = amountOfCoffeeBean;
-        this.disposableCups = amountOfCups;
-        this.totalIncome = basedMoney;
+        this.disposableCups = disposableCups;
+        this.totalIncome = totalIncome;
+    }
+
+    public static CoffeeMachine getInstance(int amountOfWater, int amountOfMilk, int amountOfCoffeeBean, int disposableCups, int totalIncome) {
+        if (instance == null) {
+            instance = new CoffeeMachine(amountOfWater, amountOfMilk, amountOfCoffeeBean, disposableCups, totalIncome);
+        }
+        return instance;
     }
 
     public int getAmountOfWater() {
@@ -67,5 +72,13 @@ public class CoffeeMachine {
         System.out.printf("%d g of coffee beans\n", this.amountOfCoffeeBean);
         System.out.printf("%d disposable cups\n", this.disposableCups);
         System.out.printf("$%d of money\n\n", this.totalIncome);
+    }
+
+    public void consumeResources(int water, int milk, int coffee, int price) {
+        this.amountOfWater -= water;
+        this.amountOfMilk -= milk;
+        this.amountOfCoffeeBean -= coffee;
+        this.disposableCups -= 1;
+        this.totalIncome += price;
     }
 }

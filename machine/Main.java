@@ -17,9 +17,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         // 커피머신 초기화
-        CoffeeMachine coffeeMachine =
-                new CoffeeMachine(400,540,
-                        120,9,550);
+        CoffeeMachine coffeeMachine = CoffeeMachine.getInstance(400, 540, 120, 9, 550);
 
         // 메뉴 생성
         Menu espresso = new Espresso(250,0,16,4);
@@ -41,11 +39,8 @@ public class Main {
                         case "1" -> customer.buy(coffeeMachine, espresso);
                         case "2" -> customer.buy(coffeeMachine, latte);
                         case "3" -> customer.buy(coffeeMachine, cappuccino);
-                        case "back" -> {
-                            System.out.println();
-                            continue;
-                        }
-                        default -> System.out.println("We are not available of that menu.\n");
+                        case "back" -> System.out.println();
+                        default -> System.out.println("That menu is not available.\n");
                     }
                 }
                 case "fill" -> clerk.fill(coffeeMachine);

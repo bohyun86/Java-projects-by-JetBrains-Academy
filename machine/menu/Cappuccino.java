@@ -1,5 +1,6 @@
 package machine.menu;
 
+import machine.CoffeeMachine;
 import machine.Menu;
 
 public class Cappuccino extends Menu {

@@ -4,7 +4,7 @@ import java.util.Objects;
 import java.util.Scanner;
 
 
-/***
+/*
  * This Java-based Cinema Theatre Management System was developed as an educational project
  * to automate and streamline operations in a cinema environment.
  * It incorporates essential Java concepts like input/output operations, data management using arrays,
